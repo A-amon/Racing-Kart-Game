@@ -44,9 +44,9 @@ It decreases when there is no further forward or backward/reverse motion
 #### Setting Up
 1. Create a project
 2. Include the source files inside the `src` directory
-4. Start the server first by running [ServerMain](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/ServerMain.java) ⚙
-5. Next, start the client by running [Main](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/Main.java) 🕹
-6. Repeat Step 5 to open another client window (Now, you should have 2 client windows - For player 1 and 2)  
+3. Start the server first by running [ServerMain](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/ServerMain.java) ⚙
+4. Next, start the client by running [Main](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/Main.java) 🕹
+5. Repeat Step 4 to open another client window (Now, you should have 2 client windows - For player 1 and 2)  
 
 #### Gaming Time
 1. Select a kart (Once both players have selected, you will be redirected to the race track) 🏎
@@ -86,7 +86,7 @@ The implementation of this strategy inside the `update()` function found on `lin
   }        
 ```
 ### Who processes the data: Client or Server?
-In my implementation, server handles the tedious task of updating every player's state/kart's data (position, speed, etc.). The idea was taken from [Gabriel's Client-Server Game Architecture](https://www.gabrielgambetta.com/client-server-game-architecture.html) (The explanations in there are amazing!). However, not everything was implemented (such client-side prediction 😞) due to insufficient time assigned for this project.
+In my implementation, server handles the tedious task of updating every player's state/kart's data (position, speed, etc.). The idea was taken from [Gabriel's Client-Server Game Architecture](https://www.gabrielgambetta.com/client-server-game-architecture.html) (The explanations in there are amazing!). However, not everything was implemented (such as client-side prediction 😞) due to insufficient time assigned for this project.
 
 ### Inspired by React
 Notice that on [Line 28 in Scene class], the constructor accepts `params` or parameters. As someone who enjoys the amazing development experience provided by React, I thought of bringing `props` to my applications. This allows different `Scenes` to pass data to each other easily. The [SceneManager](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/SceneManager.java) is also a Singleton as only one `SceneManager` is used to manage the scene/page navigation. When a navigation is detected, `SceneManager` will alert `Main` to replace the current `Scene` with the new `Scene`: [Updating scene in Main](https://github.com/A-amon/Racing-Kart-Game/blob/cd848c51e586b2f1f4865ec625272ece071ffc3c/src/kartracinggame/Main.java#L73)
@@ -123,7 +123,7 @@ Action:MOVE_FORWARD; Angle:36.0;
 `Note: The angle value is supplied because the images are loaded on client-side. Next, the number of frames/images are not fixed but are instead determined by the number of images inside the related folder. This allows for fewer hardcoded numbers and a more flexible Animated class.` See [Kart A's frames](https://github.com/A-amon/Racing-Kart-Game/tree/main/src/assets/frames/kartA) and [Animated class](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/Animated.java)
 
 #### Server's Responses
-The client exchanges messages with server in a certain order and format. These status codes returned alongside the server's responses will show if the previous client's messages are valid or not (and due to what reason if they weren't). The `Status` enum can be found [here](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/Status.java)
+The client exchanges messages with server in a certain order and format. These status codes returned alongside the server's responses will show if the previous client's messages are valid or not (and due to what reason if they aren't). The `Status` enum can be found [here](https://github.com/A-amon/Racing-Kart-Game/blob/main/src/kartracinggame/Status.java)
 |Status|Code|Text|Description|
 |------|----|----|-----------|
 |OK|200|OK|Request has been successfully processed|
